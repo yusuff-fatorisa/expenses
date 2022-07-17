@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <title>Frontend Mentor | Expenses chart component</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js" integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" type="text/css" href="./pages/main.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="chart">
+        <div class="balance">
+          <div class="figures">
+            <p>My balance</p>
+            <span>$921.48</span>
+          </div>
+          <img src="./images/logo.svg" alt="logo">
+        </div>
+        <div class="spendings">
+          <h1>Spending - Last 7 days</h1>
+          <div data-display-bars class="display-bars"></div>
+          <div class="summary">
+            <div class="this-month">
+              <span>Total this month</span>
+              <p>$478.33</p>
+            </div>
+            <div class="last-month">
+              <p>+2.4%</p>
+              <span>from last month</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+        Coded by <a href="https://github.com/yusuff-fatorisa/expenses" target="_blank">Yusuff Fatorisa</a>.
+      </div>
+    </div>
+    <script type="text/javascript" src = "./pages/data.js"></script>
+    <script type ='text/javascript'>
+      const plotArea = document.querySelector("[data-display-bars]");
+      myData.map((item,id) => {
+        const barAndName = document.createElement("div");
+        barAndName.classList.add("bar-container");
+        const amountDisplay = document.createElement("span");
+        amountDisplay.classList.add("show-price");
+        amountDisplay.textContent = `$${item.amount.toFixed(2)}`;
+        const bar = document.createElement("div");
+        const name = document.createElement("p");
+        name.textContent = item.day;
+        name.classList.add("style-names");
+        bar.style.height = `${2 * +item.amount}px`;
+        if (item.day === "wed") {
+          bar.classList.add("present-day");
+        }
+        bar.classList.add("style-bars");
+        /*bar.addEventListener("mouseover", () => {
+          amountDisplay.style.display = "unset";
+        })*/
+        barAndName.appendChild(bar);
+        barAndName.appendChild(name);
+        barAndName.appendChild(amountDisplay);
+        plotArea.appendChild(barAndName);
+
+      })
+    </script>
+
+  </body>
+</html>
