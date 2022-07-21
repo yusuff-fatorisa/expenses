@@ -116,6 +116,7 @@ body {
 	flex-direction: column;
 	align-items: center;
 	gap: 5px;
+	position: relative;
 }
 
 
@@ -130,6 +131,8 @@ body {
 	border-radius: 5px;
 	text-align: center;
 	padding-top: 5px;
+	position: absolute;
+	top: -27.5px;
 }
 
 .style-bars {
@@ -143,9 +146,9 @@ body {
 	opacity: 0.5;
 }
 
-/*.style-bars:hover + .show-price {
-	display: unset;
-}*/
+.style-bars:hover + .show-price {
+	display: inline;
+}
 
 .present-day {
 	background-color: var(--Cyan);
